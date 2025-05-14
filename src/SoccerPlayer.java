@@ -1,29 +1,27 @@
 public enum SoccerPlayer {
-    MESSI("Forward", "Argentina", 820, 350, 1000, 10),
-    RONALDO("Forward", "Portugal", 850, 280, 1100, 7),
-    NEYMAR("Forward", "Brazil", 450, 230, 600, 11),
-    MODRIC("Midfielder", "Croatia", 120, 150, 800, 10),
-    DE_BRUYNE("Midfielder", "Belgium", 150, 180, 700, 17),
-    KANTE("Midfielder", "France", 30, 70, 650, 13),
-    VAN_DIJK("Defender", "Netherlands", 40, 50, 500, 4),
-    DAVIES("Defender", "Canada", 25, 40, 250, 19),
-    COURTOIS("Goalkeeper", "Belgium", 0, 5, 600, 1),
-    DONNARUMMA("Goalkeeper", "Italy", 0, 3, 400, 99);
+    MESSI("Forward", "Argentina", 820, 350, 1000),
+    RONALDO("Forward", "Portugal", 850, 280, 1100),
+    NEYMAR("Forward", "Brazil", 450, 230, 600),
+    MODRIC("Midfielder", "Croatia", 120, 150, 800),
+    DE_BRUYNE("Midfielder", "Belgium", 150, 180, 700),
+    KANTE("Midfielder", "France", 30, 70, 650),
+    VAN_DIJK("Defender", "Netherlands", 40, 50, 500),
+    DAVIES("Defender", "Canada", 25, 40, 250),
+    COURTOIS("Goalkeeper", "Belgium", 0, 5, 600),
+    DONNARUMMA("Goalkeeper", "Italy", 0, 3, 400);
 
     private String position;
     private String nationality;
     private int goals;
     private int assists;
     private int matchesPlayed;
-    private int jerseyNumber;
 
-    SoccerPlayer(String position, String nationality, int goals, int assists, int matchesPlayed, int jerseyNumber) {
+    SoccerPlayer(String position, String nationality, int goals, int assists, int matchesPlayed) {
         this.position = position;
         this.nationality = nationality;
         this.goals = goals;
         this.assists = assists;
         this.matchesPlayed = matchesPlayed;
-        this.jerseyNumber = jerseyNumber;
     }
 
     public String getPosition() {
@@ -44,10 +42,6 @@ public enum SoccerPlayer {
 
     public int getMatchesPlayed() {
         return matchesPlayed;
-    }
-
-    public int getJerseyNumber() {
-        return jerseyNumber;
     }
 
     public double goalsPerMatch() {
@@ -76,12 +70,15 @@ public enum SoccerPlayer {
     }
 
     public String getPlayerStats() {
-        return name() + " (" + nationality + ") - " + position + ", #" + jerseyNumber +
-                "\n   Goals: " + goals +
-                ", Assists: " + assists +
-                ", Matches: " + matchesPlayed +
-                "\n   Goals/Match: " + String.format("%.2f", goalsPerMatch()) +
-                ", Contribution Rate: " + String.format("%.2f", contributionRate()) +
-                ", Total Contributions: " + totalContributions();
+        return name() +
+                "\nNationality: " + getNationality() +
+                "\nPosition: " + getPosition() +
+                "\nGoals: " + getGoals() +
+                "\nAssists: " + getAssists() +
+                "\nMatches Played: " + getMatchesPlayed() +
+                "\nGoals per Match: " + String.format("%.2f", goalsPerMatch()) +
+                "\nAssists per Match: " + String.format("%.2f", assistsPerMatch()) +
+                "\nContribution Rate: " + String.format("%.2f", contributionRate()) +
+                "\nTotal Contributions: " + totalContributions();
     }
 }
